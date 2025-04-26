@@ -11,13 +11,23 @@ app.get("/", (req, res) => {
 })
 
 app.use("/user", router)
+app.use(express.json())
 
-// Method POST 
-app.post("/users",  express.json(), (req, res) => {
+// Method POST: Create
+app.post("/users", (req, res) => {
     const {name, email} = req.body
 
     res.json({
         messege: `User ${name} with email ${email} created successfully`
+    })
+})
+
+// Method PUT: updated
+app.put("/users/:id", (req, res) => {
+    const userID = req.params.id
+    const {name, email} = req.body
+    res.json({
+        messege: `User ${userID} updated to ${name}, ${email}`
     })
 })
 
