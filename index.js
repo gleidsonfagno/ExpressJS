@@ -1,5 +1,5 @@
 import express from "express"
-import { aboutController, contactController, searchController, usernameController } from "./controller.js"
+import router from "./route.js"
 
 const app = express()
 
@@ -10,17 +10,7 @@ app.get("/", (req, res) => {
     res.send("Hello, World")
 })
 
-//About route
-app.get("/about", aboutController)
-
-// Contact route
-app.get("/contact", contactController)
-
-// Route Dinamic
-app.get("/user/:username", usernameController)
-
-// /search?keyword=express or =node.js
-app.get("/search", searchController)
+app.use("/user", router)
 
 
 app.listen(PORT, ()=> {
