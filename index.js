@@ -12,6 +12,15 @@ app.get("/", (req, res) => {
 
 app.use("/user", router)
 
+// Method POST 
+app.post("/users",  express.json(), (req, res) => {
+    const {name, email} = req.body
+
+    res.json({
+        messege: `User ${name} with email ${email} created successfully`
+    })
+})
+
 
 app.listen(PORT, ()=> {
     console.log(`Server is running on http://localhost:${PORT}`)
