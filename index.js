@@ -1,4 +1,5 @@
 import express from "express"
+import { aboutController, contactController, searchController, usernameController } from "./controller.js"
 
 const app = express()
 
@@ -9,34 +10,20 @@ app.get("/", (req, res) => {
     res.send("Hello, World")
 })
 
+//About route
+app.get("/about", aboutController)
+
+// Contact route
+app.get("/contact", contactController)
+
+// Route Dinamic
+app.get("/user/:username", usernameController)
+
+// /search?keyword=express or =node.js
+app.get("/search", searchController)
+
+
 app.listen(PORT, ()=> {
     console.log(`Server is running on http://localhost:${PORT}`)
 })
 
-// {
-//     "name": "express",
-//     "version": "1.0.0",
-//     "main": "index.js",
-//     "scripts": {
-//       "start": "nodemon index.js"
-//     },
-//     "repository": {
-//       "type": "git",
-//       "url": "git+https://github.com/gleidsonfagno/ExpressJS.git"
-//     },
-//     "keywords": [],
-//     "author": "",
-//     "license": "ISC",
-//     "type": "module",
-//     "bugs": {
-//       "url": "https://github.com/gleidsonfagno/ExpressJS/issues"
-//     },
-//     "homepage": "https://github.com/gleidsonfagno/ExpressJS#readme",
-//     "dependencies": {
-//       "express": "^5.1.0"
-//     },
-//     "devDependencies": {
-//       "nodemon": "^3.1.10"
-//     }
-//   }
-  
