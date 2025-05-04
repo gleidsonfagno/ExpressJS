@@ -4,15 +4,12 @@ import router from "./route.js";
 const app = express();
 const PORT = 3000;
 
-// Set EJS as the view engine
-app.set("view engine", "ejs")
-
+app.use("/public", express.static("public"))
+app.use("/images", express.static("images"))
 
 // Define a simple route
 app.get("/", (req, res) => {
-  const userName = "Elloon Musk"
-
-  res.render("index", {userName});
+  res.send("Hello Express")
 });
 
 app.listen(PORT, () => {
